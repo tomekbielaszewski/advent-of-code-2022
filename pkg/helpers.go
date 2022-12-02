@@ -24,3 +24,12 @@ func ReadAllLines(path string) ([]string, error) {
 	}
 	return lines, scanner.Err()
 }
+
+func ReplaceAtIndex(str string, r rune, i int) string {
+	if i+1 > len(str) || i < 0 {
+		return str
+	}
+	out := []rune(str)
+	out[i] = r
+	return string(out)
+}
