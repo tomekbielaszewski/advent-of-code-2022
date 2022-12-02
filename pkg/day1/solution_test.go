@@ -10,6 +10,7 @@ import (
 func Test_sample_first_part(t *testing.T) {
 	lines, err := pkg.ReadAllLines("sample.txt")
 	if err != nil {
+		t.FailNow()
 		return
 	}
 	maxCal, _ := solution(lines)
@@ -19,16 +20,17 @@ func Test_sample_first_part(t *testing.T) {
 func Test_solution_first_part(t *testing.T) {
 	lines, err := pkg.ReadAllLines("final.txt")
 	if err != nil {
+		t.FailNow()
 		return
 	}
 	maxCal, _ := solution(lines)
-
 	fmt.Printf("Final solution for day 1: %d\n", maxCal[0])
 }
 
 func Test_sample_second_part(t *testing.T) {
 	lines, err := pkg.ReadAllLines("sample.txt")
 	if err != nil {
+		t.FailNow()
 		return
 	}
 	_, sumOfTop3 := solution(lines)
@@ -38,9 +40,9 @@ func Test_sample_second_part(t *testing.T) {
 func Test_solution_second_part(t *testing.T) {
 	lines, err := pkg.ReadAllLines("final.txt")
 	if err != nil {
+		t.FailNow()
 		return
 	}
 	_, sumOfTop3 := solution(lines)
-
 	fmt.Printf("Final solution for day 1: %d\n", sumOfTop3)
 }
