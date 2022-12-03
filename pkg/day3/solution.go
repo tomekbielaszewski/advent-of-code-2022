@@ -10,13 +10,7 @@ func solution(lines []string) int {
 		items := make(map[rune]int)
 		for i, r := range runes {
 			if i < middle {
-				diff := 0
-				if unicode.IsUpper(r) {
-					diff = 38
-				} else {
-					diff = 96
-				}
-				items[r] = int(r) - diff
+				items[r] = itemPriority(r)
 			} else {
 				if val, ok := items[r]; ok {
 					sum += val
@@ -29,5 +23,39 @@ func solution(lines []string) int {
 }
 
 func solution2(lines []string) int {
-	return 0
+	sum := 0
+	items := make(map[rune]int)
+	for i, line := range lines {
+		runes := []rune(line)
+		if i%3 == 0 {
+			items = make(map[rune]int)
+			for _, r := range runes {
+				items[r] = itemPriority(r)
+			}
+		} else {
+			repeatedItems := make(map[rune]int)
+			for _, r := range runes {
+				if val, ok := items[r]; ok {
+					repeatedItems[r] = val
+				}
+			}
+			items = repeatedItems
+			if i%3 == 2 {
+				for _, priority := range items {
+					sum += priority
+				}
+			}
+		}
+	}
+	return sum
+}
+
+func itemPriority(r rune) int {
+	diff := 0
+	if unicode.IsUpper(r) {
+		diff = 38
+	} else {
+		diff = 96
+	}
+	return int(r) - diff
 }
