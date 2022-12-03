@@ -49,3 +49,10 @@ func TestStringToInt(t *testing.T) {
 		})
 	}
 }
+
+func TestRuneToIntConversion(t *testing.T) {
+	assert.Equal(t, 1, int('a')-96)
+	assert.Equal(t, 26, int('z')-96)
+	assert.Equal(t, 27, int('A')-38)
+	assert.Equal(t, 52, int('Z')-38)
+}
