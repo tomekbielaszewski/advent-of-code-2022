@@ -10,6 +10,14 @@ func StringToInt(str string) (int, error) {
 	return strconv.Atoi(str)
 }
 
+func StringToIntNoErr(str string) int {
+	atoi, err := strconv.Atoi(str)
+	if err != nil {
+		panic(err)
+	}
+	return atoi
+}
+
 func ReadAllLines(path string) ([]string, error) {
 	file, err := os.Open(path)
 	if err != nil {
