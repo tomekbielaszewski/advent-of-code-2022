@@ -31,7 +31,27 @@ func solution(lines []string) string {
 }
 
 func solution2(lines []string) string {
-	return "sum"
+	stacksInitialized := false
+	var stackLines []string
+	var moveLines []string
+	for _, line := range lines {
+		if line == "" {
+			stacksInitialized = true
+			continue
+		}
+
+		if !stacksInitialized {
+			stackLines = append(stackLines, line)
+		} else {
+			moveLines = append(moveLines, line)
+		}
+	}
+
+	stacks := parseStacks(stackLines)
+
+	executeMovingCrates2(moveLines, stacks)
+
+	return peekStackTops(stacks)
 }
 
 type stack struct {
@@ -68,6 +88,13 @@ func executeMovingCrates(lines []string, stacks map[string]*stack) {
 	}
 }
 
+func executeMovingCrates2(lines []string, stacks map[string]*stack) {
+	for _, line := range lines {
+		params := strings.Split(line, " ")
+		stacks[params[3]].moveCrates2(pkg.StringToIntNoErr(params[1]), stacks[params[5]])
+	}
+}
+
 func peekStackTops(stacks map[string]*stack) string {
 	stackTops := ""
 	for i := 1; i < len(stacks)+1; i++ {
@@ -86,4 +113,9 @@ func (from *stack) moveCrates(num int, to *stack) {
 		to.crates = append(to.crates, from.crates[len(from.crates)-1])
 		from.crates = from.crates[:len(from.crates)-1]
 	}
+}
+
+func (from *stack) moveCrates2(num int, to *stack) {
+	to.crates = append(to.crates, from.crates[len(from.crates)-num:]...)
+	from.crates = from.crates[:len(from.crates)-num]
 }

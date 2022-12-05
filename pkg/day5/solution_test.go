@@ -34,7 +34,7 @@ func Test_sample_second_part(t *testing.T) {
 		return
 	}
 	sum := solution2(lines)
-	assert.Equal(t, 4, sum)
+	assert.Equal(t, "MCD", sum)
 }
 
 func Test_solution_second_part(t *testing.T) {
