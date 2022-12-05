@@ -56,3 +56,34 @@ func TestRuneToIntConversion(t *testing.T) {
 	assert.Equal(t, 27, int('A')-38)
 	assert.Equal(t, 52, int('Z')-38)
 }
+
+func TestSplitAfterNRunes(t *testing.T) {
+	type args struct {
+		str           string
+		divEveryRunes int
+	}
+	tests := []struct {
+		name  string
+		param string
+		divBy int
+		want  []string
+	}{
+		{
+			name:  "[Z] [M] [P]",
+			param: "[Z] [M] [P]",
+			divBy: 4,
+			want:  []string{"[Z] ", "[M] ", "[P]"},
+		},
+		{
+			name:  "[Z] [M]    ",
+			param: "[Z] [M]    ",
+			divBy: 4,
+			want:  []string{"[Z] ", "[M] ", "   "},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equalf(t, tt.want, SplitAfterNRunes(tt.param, tt.divBy), "SplitAfterNRunes(%v, %v)", tt.param, tt.divBy)
+		})
+	}
+}

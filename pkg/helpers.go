@@ -41,3 +41,15 @@ func ReplaceAtIndex(str string, r rune, i int) string {
 	out[i] = r
 	return string(out)
 }
+
+func SplitAfterNRunes(str string, divEveryRunes int) []string {
+	var splitStrings []string
+	for len(str) > 0 {
+		if len(str) < divEveryRunes {
+			divEveryRunes = len(str)
+		}
+		splitStrings = append(splitStrings, str[:divEveryRunes])
+		str = str[divEveryRunes:]
+	}
+	return splitStrings
+}
