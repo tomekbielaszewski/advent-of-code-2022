@@ -74,7 +74,47 @@ func Test_sample_second_part(t *testing.T) {
 		return
 	}
 	sum := solution2(lines)
-	assert.Equal(t, "MCD", sum)
+	assert.Equal(t, 19, sum)
+}
+
+func Test_sample2_second_part(t *testing.T) {
+	lines, err := pkg.ReadAllLines("sample2.txt")
+	if err != nil {
+		t.FailNow()
+		return
+	}
+	sum := solution2(lines)
+	assert.Equal(t, 23, sum)
+}
+
+func Test_sample3_second_part(t *testing.T) {
+	lines, err := pkg.ReadAllLines("sample3.txt")
+	if err != nil {
+		t.FailNow()
+		return
+	}
+	sum := solution2(lines)
+	assert.Equal(t, 23, sum)
+}
+
+func Test_sample4_second_part(t *testing.T) {
+	lines, err := pkg.ReadAllLines("sample4.txt")
+	if err != nil {
+		t.FailNow()
+		return
+	}
+	sum := solution2(lines)
+	assert.Equal(t, 29, sum)
+}
+
+func Test_sample5_second_part(t *testing.T) {
+	lines, err := pkg.ReadAllLines("sample5.txt")
+	if err != nil {
+		t.FailNow()
+		return
+	}
+	sum := solution2(lines)
+	assert.Equal(t, 26, sum)
 }
 
 func Test_solution_second_part(t *testing.T) {
