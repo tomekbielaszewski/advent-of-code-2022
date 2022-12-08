@@ -54,7 +54,7 @@ func Test_sample_second_part(t *testing.T) {
 		return
 	}
 	sum := solution2(lines)
-	assert.Equal(t, 24933642, sum)
+	assert.Equal(t, 8, sum)
 }
 
 func Test_solution_second_part(t *testing.T) {
