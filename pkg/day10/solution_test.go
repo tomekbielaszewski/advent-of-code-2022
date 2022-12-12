@@ -34,7 +34,7 @@ func Test_sample_second_part(t *testing.T) {
 		return
 	}
 	sum := solution2(lines)
-	assert.Equal(t, 8, sum)
+	assert.Equal(t, "\n##..##..##..##..##..##..##..##..##..##..\n###...###...###...###...###...###...###.\n####....####....####....####....####....\n#####.....#####.....#####.....#####.....\n######......######......######......####\n#######.......#######.......#######.....", sum)
 }
 
 func Test_solution_second_part(t *testing.T) {
@@ -44,5 +44,5 @@ func Test_solution_second_part(t *testing.T) {
 		return
 	}
 	sum := solution2(lines)
-	fmt.Printf("Final solution for day 10: %d\n", sum)
+	fmt.Printf("Final solution for day 10: %s\n", sum)
 }
